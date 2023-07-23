@@ -1,12 +1,13 @@
 import cc from "classcat";
 
-export default function Button({ children, ...props }) {
+export default function Button({ outline, children, ...props }) {
   console.log(props.className);
   return (
     <button
       {...props}
       className={cc([
-        "w-full btn btn-primary outline-none text-white text-h2",
+        "w-full btn text-white text-h2 btn-primary",
+        outline ? "btn-outline" : "outline-none",
         props.className,
       ])}
     >
