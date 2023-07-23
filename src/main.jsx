@@ -7,6 +7,7 @@ import Home from "./views/home";
 
 import "./index.css";
 import "./tailwind.css";
+import Mypage from "./views/mypage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/onboard" element={<Onboard />} />
+          <Route path="/mypage" element={<Mypage />} />
         </Routes>
       </Router>
     </Layout>
