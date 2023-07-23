@@ -6,7 +6,7 @@ export default function Mypage() {
   const user = { type: "senior" };
   return (
     <div className="w-full h-full">
-      <Header />
+      <Header hasBackRoute />
       {user === "parent" && <MypageParent />}
       {user === "senior" && <MypageSenior />}
     </div>
