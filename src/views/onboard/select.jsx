@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Callout from "@/components/common/Callout";
 import Icons from "@/components/Icons";
 import Button from "../../components/common/Button";
+import { Link } from "react-router-dom";
 
 export default function OnboardSelect() {
   return (
@@ -21,30 +22,34 @@ export default function OnboardSelect() {
         </Callout>
 
         <div className="w-full h-full flex flex-col mt-12 gap-5">
-          <Button className="py-8 h-auto flex-col gap-3" outline>
-            <div className="w-36 h-36 -mt-8">
-              <img
-                className="w-full h-full object-cover"
-                src="./assets/family.svg"
-                alt="가족 그림"
-              />
-            </div>
-            <div className="text-subtitle-lg -mt-8">
-              <strong>부모 회원</strong>으로 가입하기
-            </div>
-          </Button>
-          <Button className="py-8 h-auto flex-col gap-3" outline>
-            <div className="w-36 h-36 -mt-8">
-              <img
-                className="w-full h-full object-cover"
-                src="./assets/superWoman.svg"
-                alt="가족 그림"
-              />
-            </div>
-            <div className="text-subtitle-lg -mt-8">
-              <strong>시니어 시터</strong>로 가입하기
-            </div>
-          </Button>
+          <Link to="../parent">
+            <Button className="py-8 h-auto flex-col gap-3" outline>
+              <div className="w-36 h-36 -mt-8">
+                <img
+                  className="w-full h-full object-cover"
+                  src="./assets/family.svg"
+                  alt="가족 그림"
+                />
+              </div>
+              <div className="text-subtitle-lg -mt-8">
+                <strong>부모 회원</strong>으로 가입하기
+              </div>
+            </Button>
+          </Link>
+          <Link to="../senior">
+            <Button className="py-8 h-auto flex-col gap-3" outline>
+              <div className="w-36 h-36 -mt-8">
+                <img
+                  className="w-full h-full object-cover"
+                  src="./assets/superWoman.svg"
+                  alt="가족 그림"
+                />
+              </div>
+              <div className="text-subtitle-lg -mt-8">
+                <strong>시니어 시터</strong>로 가입하기
+              </div>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
