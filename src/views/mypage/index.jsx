@@ -7,8 +7,7 @@ export default function Mypage() {
   return (
     <div className="w-full h-full">
       <Header hasBackRoute />
-      {user === "parent" && <MypageParent />}
-      {user === "senior" && <MypageSenior />}
+      {user.type === "parent" ? <MypageParent /> : <MypageSenior />}
     </div>
   );
 }
