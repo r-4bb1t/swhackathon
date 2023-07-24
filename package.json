@@ -13,6 +13,7 @@
     "classcat": "^5.0.4",
     "framer-motion": "^10.13.0",
     "react": "^18.2.0",
+    "react-bottom-drawer": "^0.1.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2"
   },

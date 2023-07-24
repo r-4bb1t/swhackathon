@@ -18,9 +18,24 @@
 }
 
 body {
-  width: 100%;
   height: 100vh;
   margin: 0;
   display: flex;
   place-items: center;
+}
+
+/* Bottom Drawer */
+.drawer{
+  width: 100%;
+  height: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+}
+
+.drawer__handle-wrapper{
+  display: none !important;
+}
+
+.drawer__content{
+  padding-left: 0px;
 }
