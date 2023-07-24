@@ -23,56 +23,65 @@ export default {
       },
     },
     fontSize: {
-      h1: {
-        fontSize: "22px",
-        lineHeight: "34px",
-        fontWeight: "700",
-      },
-      h2: {
-        fontSize: "20px",
-        fontWeight: "600",
-      },
-
-      "subtitle-lg": {
-        fontSize: "18px",
-        lineHeight: "28px",
-        fontWeight: "600",
-      },
-      "subtitle-bold": {
-        fontSize: "16px",
-        lineHeight: "24px",
-        fontWeight: "600",
-      },
-      subtitle: {
-        fontSize: "16px",
-        lineHeight: "22px",
-        fontWeight: "400",
-      },
-
-      "body-lg": {
-        fontSize: "17px",
-        fontWeight: "400",
-      },
-      "body-bold": {
-        fontSize: "17px",
-        fontWeight: "700",
-      },
-      body: {
-        fontSize: "14px",
-        lineHeight: "20px",
-        fontWeight: "400",
-      },
+      h1: [
+        "22px",
+        {
+          lineHeight: "34px",
+        },
+      ],
+      h2: "20px",
+      "subtitle-lg": [
+        "18px",
+        {
+          lineHeight: "28px",
+        },
+      ],
+      "subtitle-bold": [
+        "16px",
+        {
+          lineHeight: "24px",
+          fontWeight: "600",
+        },
+      ],
+      subtitle: [
+        "16px",
+        {
+          lineHeight: "22px",
+          fontWeight: "400",
+        },
+      ],
+      "body-lg": [
+        "17px",
+        {
+          fontWeight: "400",
+        },
+      ],
+      "body-bold": [
+        "17px",
+        {
+          fontWeight: "700",
+        },
+      ],
+      body: [
+        "14px",
+        {
+          lineHeight: "20px",
+          fontWeight: "400",
+        },
+      ],
 
       "caption-sm": {
         fontSize: "10px",
         lineHeight: "16px",
         fontWeight: "400",
       },
-      caption: {
-        fontSize: "12px",
-        lineHeight: "16px",
-        fontWeight: "600",
-      },
+      caption: [
+        "12px",
+        {
+          lineHeight: "16px",
+          fontWeight: "600",
+        },
+      ],
     },
   },
   daisyui: {
@@ -83,6 +92,7 @@ export default {
           secondary: "#e5a1a0",
           accent: "#feebdc",
           error: "#ff6b00",
+          neutral: "#dddddd",
         },
       },
     ],

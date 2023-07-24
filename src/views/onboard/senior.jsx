@@ -1,3 +1,9 @@
+import Header from "../../components/Header";
+
 export default function OnboardSenior() {
-  return <div></div>;
+  return (
+    <div>
+      <Header hasBackRoute />
+    </div>
+  );
 }
