@@ -7,7 +7,7 @@ export default function Button({ outline, children, ...props }) {
       {...props}
       className={cc([
         "w-full btn text-white text-h2 btn-primary",
-        outline ? "btn-outline" : "outline-none",
+        outline ? "btn-outline hover:!text-white" : "outline-none",
         props.className,
       ])}
     >
