@@ -36,7 +36,7 @@ export default function OnboardSelect() {
               </div>
             </Button>
           </Link>
-          <Link to="../senior">
+          <Link to="../senior/check">
             <Button className="py-8 h-auto flex-col gap-3" outline>
               <div className="w-36 h-36 -mt-8">
                 <img

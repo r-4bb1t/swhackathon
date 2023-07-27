@@ -22,7 +22,7 @@ export default function AppRoutes() {
             <Route path="/" element={<Onboard />} />
             <Route path="/select" element={<OnboardSelect />} />
             <Route path="/parent" element={<OnboardParent />} />
-            <Route path="/senior" element={<OnboardSenior />} />
+            <Route path="/senior/*" element={<OnboardSenior />} />
           </>
         )}
       </Routes>

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function Header({ hasBackRoute }) {
   const navigate = useNavigate();
   return (
-    <header className="w-full h-14 flex items-center px-4">
+    <header className="w-full h-14 flex items-center px-4 shrink-0">
       <div className="h-full flex items-center">
         {hasBackRoute ? (
           <button onClick={() => navigate(-1)}>

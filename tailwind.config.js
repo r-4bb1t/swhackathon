@@ -27,9 +27,15 @@ export default {
         "22px",
         {
           lineHeight: "34px",
+          fontWeight: "700",
         },
       ],
-      h2: "20px",
+      h2: [
+        "20px",
+        {
+          fontWeight: "600",
+        },
+      ],
       "subtitle-lg": [
         "18px",
         {
