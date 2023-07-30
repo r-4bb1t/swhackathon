@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { GU_TYPE } from "../../../constants/region";
 
-export default function Region() {
+export default function Region({ setWantedGuName }) {
   const [selected, setSelected] = useState(null);
   return (
     <>
@@ -28,7 +28,11 @@ export default function Region() {
       </div>
 
       <div className="fixed bottom-0 inset-x-0 flex p-8">
-        <Link to={!selected ? "#" : "../introduction"} className="w-full">
+        <Link
+          to={!selected ? "#" : "../introduction"}
+          className="w-full"
+          onClick={() => setWantedGuName(selected)}
+        >
           <Button disabled={!selected}>다음</Button>
         </Link>
       </div>

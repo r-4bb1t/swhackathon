@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import Button from "@/components/common/Button";
 import { PHONE_REGEX } from "../../constants/phone";
 
-export default function Auth() {
-  const [phone, setPhone] = useState("");
+export default function Auth({ setAccount }) {
+  const [phoneNum, setPhoneNum] = useState("");
   const [password, setPassword] = useState("");
 
   const [selected, setSelected] = useState([false, false]);
@@ -23,8 +23,8 @@ export default function Auth() {
           <Input
             label="휴대폰 번호"
             placeholder="01012341234"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={phoneNum}
+            onChange={(e) => setPhoneNum(e.target.value)}
             autoFocus
             type="number"
           />
@@ -96,18 +96,19 @@ export default function Auth() {
         to={
           !selected[0] ||
           !selected[1] ||
-          !PHONE_REGEX.test(phone) ||
+          !PHONE_REGEX.test(phoneNum) ||
           password.length < 8
             ? "#"
             : "../region"
         }
         className="w-full"
+        onClick={() => setAccount({ phoneNum, password })}
       >
         <Button
           disabled={
             !selected[0] ||
             !selected[1] ||
-            !PHONE_REGEX.test(phone) ||
+            !PHONE_REGEX.test(phoneNum) ||
             password.length < 8
           }
         >

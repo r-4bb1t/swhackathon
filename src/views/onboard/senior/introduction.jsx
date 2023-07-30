@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "@/components/common/Input";
 
-export default function Introduction() {
+export default function Introduction({ setIntroduction }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   return (
@@ -40,6 +40,9 @@ export default function Introduction() {
       <Link
         to={!name || description.length < 10 ? "#" : "../auth"}
         className="w-full"
+        onClick={() =>
+          setIntroduction({ username: name, introduction: description })
+        }
       >
         <Button disabled={!name || description.length < 10}>다음</Button>
       </Link>

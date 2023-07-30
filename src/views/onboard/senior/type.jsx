@@ -45,7 +45,7 @@ const Item = ({ title, price, description, disabled, onChange }) => {
   );
 };
 
-export default function Type() {
+export default function Type({ setCareTypes }) {
   const [selected, setSelected] = useState([]);
   return (
     <>
@@ -75,7 +75,11 @@ export default function Type() {
           ))}
         </div>
       </div>
-      <Link to={selected.length === 0 ? "#" : "../child"} className="w-full">
+      <Link
+        to={selected.length === 0 ? "#" : "../child"}
+        className="w-full"
+        onClick={() => setCareTypes(selected)}
+      >
         <Button disabled={selected.length === 0}>다음</Button>
       </Link>
     </>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CHILD_TYPE } from "@/constants/child";
 
-export default function Child() {
+export default function Child({ setChildTypes }) {
   const [selected, setSelected] = useState([]);
   return (
     <>
@@ -29,7 +29,11 @@ export default function Child() {
         </div>
       </div>
 
-      <Link to={selected.length === 0 ? "#" : "../region"} className="w-full">
+      <Link
+        to={selected.length === 0 ? "#" : "../region"}
+        className="w-full"
+        onClick={() => setChildTypes(selected)}
+      >
         <Button disabled={selected.length === 0}>다음</Button>
       </Link>
     </>
