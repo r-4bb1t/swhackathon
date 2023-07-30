@@ -7,15 +7,17 @@ import Call from "./call.svg";
 import Home from "./home.svg";
 import Consultation from "./chat.svg";
 import MyPage from "./myPage.svg";
+import Spinner from "./spinner.svg";
 
 export default {
-    Logo,
-    LeftChevron,
-    RightChevron,
-    LeftArrow,
-    RightArrow,
-    Call,
-    Home,
-    Consultation,
-    MyPage,
+  Logo,
+  LeftChevron,
+  RightChevron,
+  LeftArrow,
+  RightArrow,
+  Call,
+  Home,
+  Consultation,
+  MyPage,
+  Spinner,
 };

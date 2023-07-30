@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Button from "@/components/common/Button";
 import { PHONE_REGEX } from "../../constants/phone";
 
-export default function Auth({ setAccount }) {
+export default function Auth({ seniorOnboardInfo, isLoading, handleSignUp }) {
   const [phoneNum, setPhoneNum] = useState("");
   const [password, setPassword] = useState("");
 
@@ -92,29 +92,24 @@ export default function Auth({ setAccount }) {
         </div>
       </div>
 
-      <Link
-        to={
+      <Button
+        disabled={
           !selected[0] ||
           !selected[1] ||
           !PHONE_REGEX.test(phoneNum) ||
-          password.length < 8
-            ? "#"
-            : "../region"
+          password.length < 8 ||
+          isLoading
         }
-        className="w-full"
-        onClick={() => setAccount({ phoneNum, password })}
+        onClick={() =>
+          handleSignUp({ ...seniorOnboardInfo, phoneNum, password })
+        }
       >
-        <Button
-          disabled={
-            !selected[0] ||
-            !selected[1] ||
-            !PHONE_REGEX.test(phoneNum) ||
-            password.length < 8
-          }
-        >
-          완료
-        </Button>
-      </Link>
+        {isLoading ? (
+          <Icons.Spinner className="stroke-white w-4 h-4 animate-spin" />
+        ) : (
+          "완료"
+        )}
+      </Button>
     </>
   );
 }

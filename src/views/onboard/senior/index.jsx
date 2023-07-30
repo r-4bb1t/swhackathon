@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Check from "./check";
 import Type from "./type";
 import Child from "./child";
@@ -7,8 +7,14 @@ import Region from "./region";
 import Introduction from "./introduction";
 import Auth from "../auth";
 import { useState } from "react";
+import { useMutation } from "react-query";
+import { postSitters } from "../../../queries/auth";
+import { useSetRecoilState } from "recoil";
+import { userInfoState } from "../../../recoil/atoms/userState";
 
 export default function OnboardSenior() {
+  const navigate = useNavigate();
+  const setUserState = useSetRecoilState(userInfoState);
   const [seniorOnboardInfo, setSeniorOnboardInfo] = useState({
     careTypes: null,
     childType: null,
@@ -38,10 +44,22 @@ export default function OnboardSenior() {
       return { ...seniorOnboardInfo, username, introduction };
     });
   };
-  const setAccount = ({ phoneNum, password }) => {
-    setSeniorOnboardInfo((seniorOnboardInfo) => {
-      return { ...seniorOnboardInfo, phoneNum, password };
-    });
+  const { isLoading, mutate: signUp } = useMutation({
+    mutationKey: ["post-sitters"],
+    mutationFn: () => postSitters(seniorOnboardInfo),
+    onSuccess: (data) => {
+      setUserState({
+        id: data.id,
+        name: data.name,
+        userType: data.userType,
+        isLogin: true,
+      });
+      navigate("/");
+    },
+  });
+
+  const handleSignUp = (seniorOnboardInfo) => {
+    signUp(seniorOnboardInfo);
   };
 
   return (
@@ -63,7 +81,16 @@ export default function OnboardSenior() {
             path="/introduction"
             element={<Introduction setIntroduction={setIntroduction} />}
           />
-          <Route path="/auth" element={<Auth setAccount={setAccount} />} />
+          <Route
+            path="/auth"
+            element={
+              <Auth
+                seniorOnboardInfo={seniorOnboardInfo}
+                isLoading={isLoading}
+                handleSignUp={handleSignUp}
+              />
+            }
+          />
         </Routes>
       </div>
     </div>
