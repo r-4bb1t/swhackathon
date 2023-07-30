@@ -11,10 +11,10 @@ export default function HomeSenior() {
         <Route
           path="/"
           element={
-            <>
+            <div className="w-full h-full p-8 pt-12">
               <SeniorJob />
               <SeniorEducation />
-            </>
+            </div>
           }
         />
         <Route path="/children/list" element={<ChildrenList />} />
