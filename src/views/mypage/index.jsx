@@ -1,13 +1,15 @@
+import { useRecoilValue } from "recoil";
 import Header from "../../components/Header";
 import MypageParent from "./parent";
 import MypageSenior from "./senior";
+import { userInfoState } from "../../recoil/atoms/userState";
 
 export default function Mypage() {
-  const user = { type: "senior" };
+  const user = useRecoilValue(userInfoState);
   return (
     <div className="w-full h-full">
       <Header hasBackRoute />
-      {user.type === "parent" ? <MypageParent /> : <MypageSenior />}
+      {user.userType === "parent" ? <MypageParent /> : <MypageSenior />}
     </div>
   );
 }
