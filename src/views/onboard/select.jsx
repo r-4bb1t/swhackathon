@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default function OnboardSelect() {
   return (
     <div className="w-full h-full flex flex-col">
-      <Header hasBackRoute />
+      <Header />
       <div className="w-full h-full flex flex-col p-4 pt-12">
         <Callout>
           <div className="flex items-center gap-4">
