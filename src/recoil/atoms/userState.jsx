@@ -6,7 +6,7 @@ export const userInfoState = atom({
   default: {
     id: "",
     name: "",
-    userType: "",
-    isLogin: false,
+    userType: "senior",
+    isLogin: true,
   },
 });

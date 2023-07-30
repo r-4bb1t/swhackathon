@@ -9,7 +9,9 @@ export default function Home() {
   return (
     <div className="w-full h-full">
       <Header />
-      {user.type === "parent" ? <HomeParent /> : <HomeSenior />}
+      <div className="w-full h-auto flex flex-col justify-between p-8 pt-12">
+        {user.type === "parent" ? <HomeParent /> : <HomeSenior />}
+      </div>
     </div>
   );
 }
