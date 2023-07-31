@@ -1,12 +1,18 @@
 import { atom } from "recoil";
-// user 관련 atoms 예시
+import { childrenBirthSelector } from "../selectors/childrenState";
 
 export const userInfoState = atom({
-  key: "userInfoState",
-  default: {
-    id: "",
-    name: "",
-    userType: "",
-    isLogin: false,
-  },
+    // 유저 정보
+    key: "userInfoState",
+    default: {
+        introduction: "",
+        password: "",
+        phoneNum: "",
+        userType: "",
+        careType: [],
+        childrenBirths: [],
+        wantedGuName: "",
+        isLogin: false,
+    },
+
 });
