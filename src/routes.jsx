@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useUser } from "./contexts/useUser";
 import Home from "./views/home";
 import Onboard from "./views/onboard";
 import Mypage from "./views/mypage";
@@ -46,4 +45,5 @@ export default function AppRoutes() {
             </Routes>
         </Router>
     );
+
 }
