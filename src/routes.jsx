@@ -8,13 +8,15 @@ import ParentCareType from "./views/onboard/parentCareType";
 import ParentChildrenBirth from "./views/onboard/parentChildrenBirth";
 import ParentwantedGu from "./views/onboard/parentwantedGu";
 import ParentIntroduction from "./views/onboard/parentIntroduction";
+import { useRecoilValue } from "recoil";
+import { userInfoState } from "./recoil/atoms/userState";
 
 export default function AppRoutes() {
-    const { user } = useUser();
+    const user = useRecoilValue(userInfoState);
     return (
         <Router>
             <Routes>
-                {user ? (
+                {user.isLogin ? (
                     <>
                         <Route path="/" element={<Home />} />
                         <Route path="/mypage" element={<Mypage />} />
@@ -45,5 +47,4 @@ export default function AppRoutes() {
             </Routes>
         </Router>
     );
-
 }

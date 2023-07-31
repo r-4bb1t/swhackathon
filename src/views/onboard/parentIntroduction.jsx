@@ -16,12 +16,14 @@ function ParentIntroduction() {
     };
 
     const handleNextButtonClick = () => {
-        setUserInfo((prevState) => ({
-            ...prevState,
-            introduction: text,
-        }));
-        console.log("Updated userInfo:", userInfo);
-        // navigate("../makeAccount");
+        if (isActive) {
+            setUserInfo((prevState) => ({
+                ...prevState,
+                introduction: text,
+            }));
+            console.log("Updated userInfo:", userInfo);
+            // navigate("../makeAccount");
+        }
     };
 
     useEffect(() => {
@@ -60,7 +62,6 @@ function ParentIntroduction() {
                 className={`btn btn-wide w-80 ml-9 text-white border-none mt-32 fixed bottom-10 ${
                     isActive ? "bg-primary" : "bg-black-400"
                 }`}
-                disabled={!isActive}
             >
                 다음
             </button>
