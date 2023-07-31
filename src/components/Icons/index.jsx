@@ -8,6 +8,7 @@ import Call from "./call.svg";
 import Home from "./home.svg";
 import Consultation from "./chat.svg";
 import MyPage from "./myPage.svg";
+import Next from "./next.svg";
 
 export default {
     Logo,
@@ -20,4 +21,5 @@ export default {
     Home,
     Consultation,
     MyPage,
+    Next,
 };

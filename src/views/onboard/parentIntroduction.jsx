@@ -22,7 +22,7 @@ function ParentIntroduction() {
                 introduction: text,
             }));
             console.log("Updated userInfo:", userInfo);
-            // navigate("../makeAccount");
+            navigate("../parentMakeAccount");
         }
     };
 
