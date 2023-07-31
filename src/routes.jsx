@@ -10,6 +10,7 @@ import ParentwantedGu from "./views/onboard/parentwantedGu";
 import ParentIntroduction from "./views/onboard/parentIntroduction";
 import { useRecoilValue } from "recoil";
 import { userInfoState } from "./recoil/atoms/userState";
+import ParentMakeAccount from "./views/onboard/parentMakeAccount";
 
 export default function AppRoutes() {
     const user = useRecoilValue(userInfoState);
@@ -40,6 +41,10 @@ export default function AppRoutes() {
                         <Route
                             path="/parentIntroduction"
                             element={<ParentIntroduction />}
+                        />
+                        <Route
+                            path="/parentMakeAccount"
+                            element={<ParentMakeAccount />}
                         />
                         <Route path="/senior" element={<OnboardSenior />} />
                     </>
