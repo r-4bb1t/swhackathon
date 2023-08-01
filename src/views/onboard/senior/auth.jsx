@@ -1,7 +1,7 @@
 import Input from "@/components/common/Input";
 import Icons from "@/components/Icons";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "@/components/common/Button";
 import { PHONE_REGEX } from "../../../constants/phone";
 import { useRecoilState } from "recoil";
