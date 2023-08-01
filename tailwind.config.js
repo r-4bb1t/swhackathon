@@ -30,7 +30,12 @@ export default {
           fontWeight: "700",
         },
       ],
-      h2: "20px",
+      h2: [
+        "20px",
+        {
+          fontWeight: "600",
+        },
+      ],
       "subtitle-lg": [
         "18px",
         {

@@ -5,7 +5,7 @@ export default function Header() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   return (
-    <header className="w-full h-14 flex items-center px-4">
+    <header className="w-full h-14 flex items-center px-4 shrink-0">
       <div className="h-full flex items-center">
         {pathname === "/" ? (
           <div className="pl-2">

@@ -9,17 +9,19 @@ import Home from "./home.svg";
 import Consultation from "./chat.svg";
 import MyPage from "./myPage.svg";
 import Next from "./next.svg";
+import Spinner from "./spinner.svg";
 
 export default {
-    Logo,
-    LeftChevron,
-    RightChevron,
-    LeftArrow,
-    RightArrow,
-    DownArrow,
-    Call,
-    Home,
-    Consultation,
-    MyPage,
-    Next,
+  Logo,
+  LeftChevron,
+  RightChevron,
+  LeftArrow,
+  RightArrow,
+  Call,
+  Home,
+  Consultation,
+  MyPage,
+  DownArrow,
+  Next,
+  Spinner,
 };

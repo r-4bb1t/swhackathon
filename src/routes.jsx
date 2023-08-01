@@ -37,7 +37,7 @@ export default function AppRoutes() {
               element={<ParentIntroduction />}
             />
             <Route path="/parentMakeAccount" element={<ParentMakeAccount />} />
-            <Route path="/senior" element={<OnboardSenior />} />
+            <Route path="/senior/*" element={<OnboardSenior />} />
           </>
         )}
       </Routes>
