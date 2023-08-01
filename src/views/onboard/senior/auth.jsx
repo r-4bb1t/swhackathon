@@ -45,7 +45,7 @@ export default function Auth() {
             value={phoneNum}
             onChange={(e) => setPhoneNum(e.target.value)}
             autoFocus
-            type="number"
+            type="tel"
           />
         </div>
         <div className="mt-4 w-full">

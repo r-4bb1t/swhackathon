@@ -9,7 +9,7 @@ export default function Onboard() {
         <div className="w-full h-1/2 bg-gray-200 shrink-0"></div>
         <div className="w-full h-full flex flex-col justify-between">
           <div className="flex flex-col items-center p-8 gap-4">
-            <Input placeholder="010-1234-1234" label={"휴대폰 번호"} />
+            <Input placeholder="01012341234" label={"휴대폰 번호"} type="tel" />
             <Input placeholder="password" label={"비밀번호"} type="password" />
           </div>
 
