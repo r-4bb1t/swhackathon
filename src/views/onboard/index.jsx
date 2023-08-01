@@ -16,7 +16,9 @@ export default function Onboard() {
           <div className="flex flex-col items-center p-8 gap-4">
             <Button>로그인</Button>
             <Link to="./select" className="w-full">
-              <Button className="btn-neutral !text-black">회원가입</Button>
+              <Button className="btn-neutral bg-black-400 border-black-400 hover:bg-black-600 hover:border-black-600 !text-black">
+                회원가입
+              </Button>
             </Link>
           </div>
         </div>
