@@ -2,10 +2,19 @@ import Button from "@/components/common/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "@/components/common/Input";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../recoil/atoms/userState";
 
-export default function Introduction({ setIntroduction }) {
+export default function Introduction() {
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [introduction, setIntroduction] = useState("");
+
+  const [userState, setUserState] = useRecoilState(userInfoState);
+  const setAccountInfo = ({ name, introduction }) => {
+    setUserState((user) => {
+      return { ...user, name, introduction };
+    });
+  };
   return (
     <>
       <div className="w-full h-full flex flex-col shrink mb-8">
@@ -16,6 +25,7 @@ export default function Introduction({ setIntroduction }) {
             label="이름"
             placeholder="홍길동"
             value={name}
+            defaultValue={userState.name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -29,22 +39,21 @@ export default function Introduction({ setIntroduction }) {
         <textarea
           className="w-full h-full resize-none input input-primary input-bordered py-4"
           placeholder="최소 10자 이상 작성해주세요."
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={introduction}
+          defaultValue={userState.description}
+          onChange={(e) => setIntroduction(e.target.value)}
         />
         <div className="w-full text-right text-black-800 mt-1">
-          {description.length}자 / 최대 500자
+          {introduction.length}자 / 최대 500자
         </div>
       </div>
 
       <Link
-        to={!name || description.length < 10 ? "#" : "../auth"}
+        to={!name || introduction.length < 10 ? "#" : "../auth"}
         className="w-full"
-        onClick={() =>
-          setIntroduction({ username: name, introduction: description })
-        }
+        onClick={() => setAccountInfo({ name, introduction })}
       >
-        <Button disabled={!name || description.length < 10}>다음</Button>
+        <Button disabled={!name || introduction.length < 10}>다음</Button>
       </Link>
     </>
   );

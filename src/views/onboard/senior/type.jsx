@@ -1,6 +1,8 @@
 import Button from "@/components/common/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../recoil/atoms/userState";
 
 const TYPES = [
   {
@@ -25,7 +27,14 @@ const TYPES = [
   },
 ];
 
-const Item = ({ title, price, description, disabled, onChange }) => {
+const Item = ({
+  title,
+  price,
+  description,
+  disabled,
+  onChange,
+  defaultChecked,
+}) => {
   return (
     <div>
       <label className="flex gap-4 items-center">
@@ -34,6 +43,7 @@ const Item = ({ title, price, description, disabled, onChange }) => {
           className="checkbox checkbox-primary"
           disabled={disabled}
           onChange={onChange}
+          defaultChecked={defaultChecked}
         />
         <span className="font-semibold">{title}</span>
         <div className="badge badge-accent badge-md font-medium">
@@ -45,8 +55,14 @@ const Item = ({ title, price, description, disabled, onChange }) => {
   );
 };
 
-export default function Type({ setCareTypes }) {
-  const [selected, setSelected] = useState([]);
+export default function Type() {
+  const [userState, setUserState] = useRecoilState(userInfoState);
+  const [selected, setSelected] = useState(userState.careTypes);
+  const setCareTypes = (careTypes) => {
+    setUserState((user) => {
+      return { ...user, careTypes };
+    });
+  };
   return (
     <>
       <div className="w-full h-full flex flex-col shrink">
@@ -69,6 +85,7 @@ export default function Type({ setCareTypes }) {
                   setSelected((s) => [...s, type.title]);
                 else setSelected((s) => s.filter((s) => s !== type.title));
               }}
+              defaultChecked={userState.careTypes.includes(type.title)}
               disabled={selected.length == 2 && !selected.includes(type.title)}
               key={type.title}
             />

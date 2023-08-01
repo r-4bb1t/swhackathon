@@ -6,10 +6,12 @@ export const userInfoState = atom({
   key: "userInfoState",
   default: {
     introduction: "",
+    name: "",
     password: "",
     phoneNum: "",
     userType: "",
-    careType: [],
+    careTypes: [],
+    childTypeIds: [],
     childrenBirths: [],
     wantedGuName: "",
     isLogin: false,

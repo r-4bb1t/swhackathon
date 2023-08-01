@@ -4,7 +4,7 @@ export const postSitters = async (seniorOnboardInfo) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: seniorOnboardInfo,
+    body: JSON.stringify(seniorOnboardInfo),
   });
   if (!result.ok) {
     throw new Error(`${result.status}: ${result.statusText}`);

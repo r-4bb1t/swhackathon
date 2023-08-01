@@ -1,15 +1,34 @@
 import Input from "@/components/common/Input";
 import Icons from "@/components/Icons";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "@/components/common/Button";
-import { PHONE_REGEX } from "../../constants/phone";
+import { PHONE_REGEX } from "../../../constants/phone";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../recoil/atoms/userState";
+import { useMutation } from "react-query";
+import { postSitters } from "../../../queries/auth";
 
-export default function Auth({ seniorOnboardInfo, isLoading, handleSignUp }) {
+export default function Auth() {
   const [phoneNum, setPhoneNum] = useState("");
   const [password, setPassword] = useState("");
 
   const [selected, setSelected] = useState([false, false]);
+
+  const navigate = useNavigate();
+  const [userState, setUserState] = useRecoilState(userInfoState);
+  const { isLoading, mutate: signUp } = useMutation({
+    mutationKey: ["post-sitters"],
+    mutationFn: () =>
+      postSitters({ ...userState, phoneNum, password, userType: "SITTER" }),
+    onSuccess: () => {
+      navigate("/");
+    },
+  });
+
+  const handleSignUp = () => {
+    signUp();
+  };
 
   return (
     <>
@@ -100,9 +119,7 @@ export default function Auth({ seniorOnboardInfo, isLoading, handleSignUp }) {
           password.length < 8 ||
           isLoading
         }
-        onClick={() =>
-          handleSignUp({ ...seniorOnboardInfo, phoneNum, password })
-        }
+        onClick={() => handleSignUp()}
       >
         {isLoading ? (
           <Icons.Spinner className="stroke-white w-4 h-4 animate-spin" />

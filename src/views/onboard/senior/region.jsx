@@ -2,9 +2,17 @@ import Button from "@/components/common/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { GU_TYPE } from "../../../constants/region";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../recoil/atoms/userState";
 
-export default function Region({ setWantedGuName }) {
-  const [selected, setSelected] = useState(null);
+export default function Region() {
+  const [userState, setUserState] = useRecoilState(userInfoState);
+  const setWantedGuName = (wantedGuName) => {
+    setUserState((seniorOnboardInfo) => {
+      return { ...seniorOnboardInfo, wantedGuName };
+    });
+  };
+  const [selected, setSelected] = useState(userState.wantedGuName);
   return (
     <>
       <div className="w-full h-full flex flex-col pb-32">
@@ -20,6 +28,7 @@ export default function Region({ setWantedGuName }) {
               name="gu"
               className="w-full btn btn-primary btn-outline checked:!bg-primary checked:!text-white text-h2 flex items-center h-auto py-2"
               aria-label={gu}
+              defaultChecked={userState.wantedGuName === gu}
               onChange={() => setSelected(gu)}
               key={gu}
             />
