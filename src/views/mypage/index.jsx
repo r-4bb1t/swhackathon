@@ -8,7 +8,7 @@ export default function Mypage() {
   const user = useRecoilValue(userInfoState);
   return (
     <div className="w-full h-full">
-      <Header hasBackRoute />
+      <Header />
       {user.userType === "parent" ? <MypageParent /> : <MypageSenior />}
     </div>
   );

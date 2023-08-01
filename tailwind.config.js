@@ -27,6 +27,7 @@ export default {
         "22px",
         {
           lineHeight: "34px",
+          fontWeight: "700",
         },
       ],
       h2: "20px",
@@ -92,7 +93,7 @@ export default {
           secondary: "#e5a1a0",
           accent: "#feebdc",
           error: "#ff6b00",
-          neutral: "#dddddd",
+          neutral: "#676767",
         },
       },
     ],

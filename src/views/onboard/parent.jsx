@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 
-export default function OnboardSenior() {
+export default function OnboardParent() {
   return (
     <div>
       <Header />
