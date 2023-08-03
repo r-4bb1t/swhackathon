@@ -31,6 +31,7 @@ body {
   height: 50%;
   background-color: #ffffff;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  
 }
 
 .drawer__handle-wrapper {
@@ -39,4 +40,17 @@ body {
 
 .drawer__content {
   padding-left: 0px;
+  max-height: 60vh; /* Adjust as needed */
+}
+
+.drawer__content-container {
+  position: relative;
+}
+
+.drawer_header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #ffffff;
+  border-radius: 50%;
 }
