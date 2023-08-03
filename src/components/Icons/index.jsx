@@ -10,18 +10,24 @@ import Consultation from "./chat.svg";
 import MyPage from "./myPage.svg";
 import Next from "./next.svg";
 import Spinner from "./spinner.svg";
+import QuestionMark from "./questionMark.svg";
+import Comment from "./comment.svg";
+import Close from "./close.svg";
 
 export default {
-  Logo,
-  LeftChevron,
-  RightChevron,
-  LeftArrow,
-  RightArrow,
-  Call,
-  Home,
-  Consultation,
-  MyPage,
-  DownArrow,
-  Next,
-  Spinner,
+    Logo,
+    LeftChevron,
+    RightChevron,
+    LeftArrow,
+    RightArrow,
+    Call,
+    Home,
+    Consultation,
+    MyPage,
+    DownArrow,
+    Next,
+    Spinner,
+    QuestionMark,
+    Comment,
+    Close,
 };

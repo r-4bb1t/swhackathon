@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import Drawer from "react-bottom-drawer";
+import Icons from "@/components/Icons";
 
 const BottomDrawer = ({ isVisible, onClose, children }) => {
     const handleCloseDrawer = useCallback(() => {
@@ -19,11 +20,7 @@ const BottomDrawer = ({ isVisible, onClose, children }) => {
                 <div className="drawer_header flex justify-end p-5">
                     {/* Drawer Close Button */}
                     <button onClick={handleCloseDrawer}>
-                        <img
-                            className="object-cover w-6 h-6"
-                            src="./icons/Close.svg"
-                            alt="닫기 버튼"
-                        />
+                        <Icons.Close className="w-5 h-5"></Icons.Close>
                     </button>
                 </div>
                 {/* Drawer Content */}
