@@ -5,10 +5,17 @@ export default function Children({ items }) {
   return (
     <ul className="mt-8 divide-y divide-black-400">
       {items.map((item, i) => (
-        <Link to={`/children/detail/${item.id}`} key={i} className="block">
+        <Link
+          to={`/children/detail/${item.parentsUserId}`}
+          key={i}
+          className="block"
+        >
           <li className="flex items-center py-4">
             <div className="w-full">
-              <div className="text-subtitle-bold mb-2">23년 4월생</div>
+              <div className="text-subtitle-bold mb-2">
+                {item.parentsUserChildren[0].slice(2, 4)}년{" "}
+                {item.parentsUserChildren[0].slice(4, 6)}월생
+              </div>
               <div className="text-caption mb-3 text-black-800">신생아</div>
               <div className="flex">
                 <div className="badge badge-accent font-medium">
