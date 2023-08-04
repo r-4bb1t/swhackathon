@@ -19,9 +19,10 @@ function ParentMakeAccount() {
     const [isChecked1, setIsChecked1] = useState(false);
     const [isChecked2, setIsChecked2] = useState(false);
     const [isChecked3, setIsChecked3] = useState(false);
+
     const [userInfo, setUserInfo] = useRecoilState(userInfoState);
+
     const navigate = useNavigate();
-    const createUserMutation = useMutation(createUser);
 
     const isActive =
         isValidPassword &&
@@ -75,6 +76,8 @@ function ParentMakeAccount() {
         }
     }, [isChecked2, isChecked3]);
 
+    const createUserMutation = useMutation(createUser);
+
     const handleCompleteButtonClick = async () => {
         if (isActive) {
             setUserInfo((prevState) => ({
@@ -84,7 +87,10 @@ function ParentMakeAccount() {
             }));
             const userDataToSend = { ...userInfo };
             delete userDataToSend.isLogin;
+            delete userDataToSend.childTypeIds;
+            delete userDataToSend.name;
             try {
+                // parent user registration
                 const response = await createUserMutation.mutateAsync(
                     userDataToSend
                 );
