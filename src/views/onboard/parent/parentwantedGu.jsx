@@ -36,7 +36,7 @@ function ParentwantedGu() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col overflow-hidden">
+    <div className="w-full h-full flex flex-col overflow-hidden pt-14">
       <Header />
       <div className="w-full h-full flex flex-col justify-between p-8 pt-12">
         <div className="w-full h-full flex flex-col pb-32">

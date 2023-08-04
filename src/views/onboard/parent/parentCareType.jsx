@@ -93,7 +93,7 @@ export default function ParentCareType() {
   const isButtonActive = numChecked === 2;
 
   return (
-    <div className="w-full h-full flex flex-col overflow-hidden">
+    <div className="w-full h-full flex flex-col overflow-hidden pt-14">
       <Header />
       <div className="content-wrap h-full flex flex-col justify-between p-6">
         <div className="h-full">

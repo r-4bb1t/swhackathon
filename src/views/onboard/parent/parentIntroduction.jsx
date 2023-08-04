@@ -32,7 +32,7 @@ function ParentIntroduction() {
   }, [userInfo]);
 
   return (
-    <div className="w-full h-full flex flex-col overflow-hidden">
+    <div className="w-full h-full flex flex-col overflow-hidden pt-14">
       <Header />
       <div className="h-full flex flex-col content-wrap p-6">
         <div className="h-full">
