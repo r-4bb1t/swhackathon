@@ -36,7 +36,7 @@ export default function Region() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 inset-x-0 flex p-8">
+      <div className="fixed bottom-14 inset-x-0 flex p-8">
         <Link
           to={!selected ? "#" : "../introduction"}
           className="w-full"

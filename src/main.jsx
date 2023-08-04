@@ -9,10 +9,10 @@ import Routes from "./routes";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Layout>
-      <Providers>
+    <Providers>
+      <Layout>
         <Routes />
-      </Providers>
-    </Layout>
+      </Layout>
+    </Providers>
   </React.StrictMode>
 );

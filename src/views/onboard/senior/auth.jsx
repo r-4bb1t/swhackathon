@@ -3,7 +3,7 @@ import Icons from "@/components/Icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/common/Button";
-import { PHONE_REGEX } from "../../../constants/phone";
+import { PASSWORD_REGEX, PHONE_REGEX } from "../../../constants/phone";
 import { useRecoilState } from "recoil";
 import { userInfoState } from "../../../recoil/atoms/userState";
 import { useMutation } from "react-query";
@@ -116,7 +116,7 @@ export default function Auth() {
           !selected[0] ||
           !selected[1] ||
           !PHONE_REGEX.test(phoneNum) ||
-          password.length < 8 ||
+          !PASSWORD_REGEX.test(password) ||
           isLoading
         }
         onClick={() => handleSignUp()}

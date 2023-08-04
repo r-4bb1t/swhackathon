@@ -7,7 +7,7 @@ import { userInfoState } from "../../recoil/atoms/userState";
 export default function Mypage() {
   const user = useRecoilValue(userInfoState);
   return (
-    <div className="w-full h-full">
+    <div className="w-full pt-14">
       <Header />
       {user.userType === "parent" ? <MypageParent /> : <MypageSenior />}
     </div>
