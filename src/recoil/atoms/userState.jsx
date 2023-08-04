@@ -16,5 +16,6 @@ export const userInfoState = atom({
         childrenBirths: [],
         wantedGuName: "",
         isLogin: false,
+        accessToken: "",
     },
 });

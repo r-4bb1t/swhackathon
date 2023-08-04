@@ -8,9 +8,11 @@ import BottomDrawer from "../../../../components/common/BottomDrawer";
 import "./detail.css";
 import { useRecoilState } from "recoil";
 import { applicationInfoState } from "../../../../recoil/atoms/applicationState";
+import { SitterInfoAtom } from "../../../../recoil/atoms/sitterDetail";
+import axios from "axios";
+import { userInfoState } from "../../../../recoil/atoms/userState";
 
 export default function SitterDetail() {
-    const { id } = useParams();
     const [currentPage, setCurrentPage] = useState(1);
 
     const [showDrawer, setShowDrawer] = useState(false);
@@ -28,7 +30,29 @@ export default function SitterDetail() {
     const [selectedEndTimeAMPM, setSelectedEndTimeAMPM] = useState("AM");
     const [applicationInfo, setApplicationInfo] =
         useRecoilState(applicationInfoState);
+    const [sitterInfo, setSitterInfo] = useRecoilState(SitterInfoAtom);
+    const [userInfo, setUserInfo] = useRecoilState(userInfoState);
     const [showAlert, setShowAlert] = useState(false);
+
+    const { sitterUserId } = useParams();
+
+    // // 서버에서 시터 상세 정보 가져오기
+    // useEffect(() => {
+    //     const fetchSitter = async () => {
+    //         try {
+    //             setSitterInfo({ sitterUserId: sitterUserId });
+    //             const response = await axios.get(
+    //                 `http://34.64.176.81:3001/users/sitters/${sitterInfo.sitterUserId}`
+    //             );
+    //             setSitterInfo(response.data);
+    //             console.log("success fetch sitter");
+    //             console.log("response.data:", response.data);
+    //         } catch (error) {
+    //             throw new Error("Failed to fetch sitter.");
+    //         }
+    //     };
+    //     fetchSitter();
+    // }, []);
 
     const handleOpenDrawer = () => {
         setShowDrawer(true);
@@ -844,17 +868,15 @@ export default function SitterDetail() {
 
             <div className="w-full p-8 pt-4">
                 <div className="badge badge-accent font-medium mb-4">
-                    영등포구
+                    {sitterInfo.sitterUserWantedGu}
                 </div>
-                <h1 className="text-h1">강다정 시터님</h1>
+                <h1 className="text-h1">{sitterInfo.sitterUserName} 시터님</h1>
                 <div className="text-subtitle mt-1">12회 돌봄</div>
                 <div className=" text-subtitle-lg text-primary mt-1">
                     ✓ 정부교육이수 완료
                 </div>
                 <div className="text-body break-all text-black-800 mt-2">
-                    아들 둘과 딸 셋을 키웠어요. 육아 고수의 경험을 살려 주변의
-                    아이들을 돌보는 일을 하며 보람을 얻고 있습니다. 저는 주로
-                    평일 9시부터 6시까지 가능해요.
+                    {sitterInfo.sitterUserIntroduction}
                 </div>
 
                 <div className="divider before:bg-black-400 after:bg-black-400"></div>
@@ -863,18 +885,17 @@ export default function SitterDetail() {
                     가능한 돌봄 서비스
                 </div>
                 <div className="grid grid-cols-2 gap-4 justify-center">
-                    <div className="border border-primary rounded flex flex-col items-center justify-center text-center w-full py-4 gap-2">
-                        <div>등하원 돌봄</div>
-                        <div className="badge badge-accent font-medium">
-                            시급 12,000원
+                    {sitterInfo.sitterUserCareTypeNames.map((careType, i) => (
+                        <div
+                            key={i}
+                            className="border border-primary rounded flex flex-col items-center justify-center text-center w-full py-4 gap-2"
+                        >
+                            <div>{careType}</div>
+                            <div className="badge badge-accent font-medium">
+                                시급 12,000원
+                            </div>
                         </div>
-                    </div>
-                    <div className="border border-primary rounded flex flex-col items-center justify-center text-center w-full py-4 gap-2">
-                        <div>1회성 돌봄</div>
-                        <div className="badge badge-accent font-medium">
-                            시급 14,000원
-                        </div>
-                    </div>
+                    ))}
                 </div>
                 <p className=" text-body text-black-600 mt-3">
                     *서비스 이용 수수료가 포함된 가격입니다.
@@ -883,10 +904,15 @@ export default function SitterDetail() {
                 <div className="divider before:bg-black-400 after:bg-black-400"></div>
 
                 <div className="text-subtitle-bold mb-4">가능한 돌봄 연령</div>
-                <div className="flex w-full justify-center">
-                    <div className="border border-primary rounded flex items-center justify-center text-center w-full py-4 gap-2">
-                        <div>신생아</div>
-                    </div>
+                <div className="grid grid-cols-2 gap-4 justify-center">
+                    {sitterInfo.sitterUserChildTypeNames.map((childType, i) => (
+                        <div
+                            key={i}
+                            className="border border-primary rounded flex items-center justify-center text-center w-full py-4 gap-2"
+                        >
+                            <div>{childType}</div>
+                        </div>
+                    ))}
                 </div>
                 <div className="divider before:bg-black-400 after:bg-black-400"></div>
 
