@@ -37,7 +37,7 @@ export default function ChildrenDetail() {
   const queryClient = useQueryClient();
 
   const { data } = useQuery({
-    queryKey: ["childrenDetail"],
+    queryKey: ["childrenDetail", id],
     queryFn: () => getChild(id),
   });
   const { mutate: applyCare } = useMutation({
