@@ -222,10 +222,14 @@ function ParentChildrenBirth() {
     };
 
     useEffect(() => {
+        const convertToNumberArray = (data) => {
+            return data.map((child) => parseInt(child.year + child.month));
+        };
+
         console.log(childrenData);
         setUserInfo((prevState) => ({
             ...prevState,
-            childrenBirths: childrenData,
+            childrenBirths: convertToNumberArray(childrenData),
         }));
     }, [childrenData, setUserInfo]);
 
