@@ -21,7 +21,7 @@ export default function AppRoutes() {
         {user.isLogin ? (
           <>
             <Route path="/*" element={<Home />} />
-            <Route path="/mypage" element={<Mypage />} />
+            <Route path="/mypage/*" element={<Mypage />} />
           </>
         ) : (
           <>
