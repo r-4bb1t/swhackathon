@@ -7,7 +7,7 @@ import { useRecoilValue } from "recoil";
 export default function Home() {
   const user = useRecoilValue(userInfoState);
   return (
-    <div className="w-full h-full pt-14">
+    <div className="w-full pt-14">
       <Header />
       <div className="w-full h-auto flex flex-col justify-between">
         {user.userType === "PARENTS" ? <HomeParent /> : <HomeSenior />}
