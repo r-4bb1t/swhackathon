@@ -8,6 +8,7 @@ import { useMutation } from "react-query";
 import axios from "axios";
 import Button from "@/components/common/Button";
 import { PASSWORD_REGEX, PHONE_REGEX } from "@/constants/phone";
+import Input from "@/components/common/Input";
 
 const createUser = (userData) => {
   return axios.post("http://34.64.176.81:3001/users/parents", userData);
@@ -123,28 +124,20 @@ function ParentMakeAccount() {
           <p className="text-black-800 mt-3 mb-6">
             <span>이제 작성하신 내용으로 연결해드릴게요.</span>
           </p>
-          <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text text-black">아이디 전화번호</span>
-            </label>
-            <input
-              type="text"
-              value={phoneNum}
-              onChange={handlePhoneNumChange}
-              placeholder="전화번호를 입력해주세요"
-              className={`input input-bordered w-full max-w-xs text-black-800`}
-            />
-          </div>
-          <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text text-black">비밀번호</span>
-            </label>
-            <input
+          <Input
+            type="text"
+            value={phoneNum}
+            onChange={handlePhoneNumChange}
+            placeholder="전화번호를 입력해주세요"
+            label={"휴대폰 번호"}
+          />
+          <div className="mt-4 w-full">
+            <Input
               type="password"
               value={password}
               onChange={handlePasswordChange}
               placeholder="영/숫자 조합 6자리 이상 입력해주세요."
-              className={`input input-bordered w-full max-w-xs text-black-800 `}
+              label={"비밀번호"}
             />
           </div>
           <div className="flex items-center mt-5">
