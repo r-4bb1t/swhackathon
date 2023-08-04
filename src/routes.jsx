@@ -12,6 +12,8 @@ import { useRecoilValue } from "recoil";
 import { userInfoState } from "./recoil/atoms/userState";
 import ParentMakeAccount from "./views/onboard/parent/parentMakeAccount";
 import HomeParent from "./views/home/parent/index";
+import SitterList from "./views/home/parent/sitter/list";
+import SitterDetail from "./views/home/parent/sitter/detail";
 
 export default function AppRoutes() {
     const user = useRecoilValue(userInfoState);
@@ -22,6 +24,11 @@ export default function AppRoutes() {
                     <>
                         <Route path="/" element={<Home />} />
                         <Route path="/mypage" element={<Mypage />} />
+                        <Route path="/sitter/list" element={<SitterList />} />
+                        <Route
+                            path="/sitter/detail/:sitterUserId"
+                            element={<SitterDetail />}
+                        />
                     </>
                 ) : (
                     <>
@@ -47,8 +54,6 @@ export default function AppRoutes() {
                             path="/parentMakeAccount"
                             element={<ParentMakeAccount />}
                         />
-                        <Route path="/parent/*" element={<HomeParent />} />
-
                         <Route path="/senior/*" element={<OnboardSenior />} />
                     </>
                 )}
