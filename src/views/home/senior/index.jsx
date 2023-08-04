@@ -3,6 +3,7 @@ import SeniorEducation from "./education";
 import SeniorJob from "./jobs";
 import ChildrenList from "./children/list";
 import ChildrenDetail from "./children/detail";
+import SeniorEducationList from "./education/list";
 
 export default function HomeSenior() {
   return (
@@ -19,6 +20,7 @@ export default function HomeSenior() {
         />
         <Route path="/children/list" element={<ChildrenList />} />
         <Route path="/children/detail/:id" element={<ChildrenDetail />} />
+        <Route path="/education" element={<SeniorEducationList />} />
       </Routes>
     </div>
   );

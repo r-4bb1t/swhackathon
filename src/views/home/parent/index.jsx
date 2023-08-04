@@ -13,7 +13,6 @@ export default function HomeParent() {
                     path="/"
                     element={
                         <div className="w-full h-full p-8 pt-12">
-                            <Icons.Logo className=" w-32 h-20" />
                             <FindSitter />
                             <CareService />
                         </div>

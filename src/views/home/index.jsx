@@ -5,13 +5,13 @@ import { userInfoState } from "../../recoil/atoms/userState";
 import { useRecoilValue } from "recoil";
 
 export default function Home() {
-  const user = useRecoilValue(userInfoState);
-  return (
-    <div className="w-full h-full">
-      <Header />
-      <div className="w-full h-auto flex flex-col justify-between">
-        {user.type === "parent" ? <HomeParent /> : <HomeSenior />}
-      </div>
-    </div>
-  );
+    const user = useRecoilValue(userInfoState);
+    return (
+        <div className="w-full h-full">
+            <Header />
+            <div className="w-full h-auto flex flex-col justify-between">
+                {user.userType === "PARENTS" ? <HomeParent /> : <HomeSenior />}
+            </div>
+        </div>
+    );
 }

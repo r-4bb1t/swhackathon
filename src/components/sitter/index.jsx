@@ -6,25 +6,31 @@ export default function Sitter({ items }) {
         <ul className="mt-8 divide-y divide-black-400">
             {items.map((item, i) => (
                 <Link
-                    to={`/parent/sitter/detail/${item.id}`}
+                    to={`/sitter/detail/${item.sitterUserId}`}
                     key={i}
                     className="block"
                 >
                     <li className="flex items-center py-4">
                         <div className="w-full">
                             <div className="text-subtitle-bold mb-2">
-                                강다정 시터님
+                                {item.sitterUserName} 시터님
                             </div>
                             <div className="text-caption mb-3 text-black-800">
-                                신생아, 영아, 유아, 초등학생 돌봄 가능
+                                {/* sitterUserChildTypeNames 의 요소를 공백을 넣어 각각 출력 */}
+                                {item.sitterUserChildTypeNames.join(", ") +
+                                    " 돌봄가능"}
                             </div>
                             <div className="flex">
-                                <div className="badge badge-accent font-medium mr-2">
-                                    등하원 돌봄
-                                </div>
-                                <div className="badge badge-accent font-medium mr-2">
-                                    1회성 돌봄
-                                </div>
+                                {item.sitterUserCareTypeNames.map(
+                                    (careType, i) => (
+                                        <div
+                                            key={i}
+                                            className="badge badge-accent font-medium mr-2"
+                                        >
+                                            {careType}
+                                        </div>
+                                    )
+                                )}
                             </div>
                         </div>
                         <div className="flex items-center justify-center w-24 h-full">
