@@ -85,16 +85,22 @@ function ParentMakeAccount() {
                 password: password,
                 phoneNum: phoneNum,
             }));
-            const userDataToSend = { ...userInfo };
-            delete userDataToSend.isLogin;
-            delete userDataToSend.childTypeIds;
-            delete userDataToSend.name;
             try {
                 // parent user registration
-                const response = await createUserMutation.mutateAsync(
-                    userDataToSend
-                );
+                const response = await createUserMutation.mutateAsync({
+                    password: userInfo.password,
+                    phoneNum: userInfo.phoneNum,
+                    introduction: userInfo.introduction,
+                    userType: userInfo.userType,
+                    careTypes: userInfo.careTypes,
+                    childrenBirths: userInfo.childrenBirths,
+                    wantedGuName: userInfo.wantedGuName,
+                });
                 console.log("User(Parent) registration success:", response);
+                setUserInfo((prevState) => ({
+                    ...prevState,
+                    id: response.data.id,
+                }));
                 navigate("/");
             } catch (error) {
                 console.log("User(Parent) registration failed:", error);
