@@ -11,54 +11,43 @@ import ParentIntroduction from "./views/onboard/parent/parentIntroduction";
 import { useRecoilValue } from "recoil";
 import { userInfoState } from "./recoil/atoms/userState";
 import ParentMakeAccount from "./views/onboard/parent/parentMakeAccount";
-import HomeParent from "./views/home/parent/index";
 import SitterList from "./views/home/parent/sitter/list";
 import SitterDetail from "./views/home/parent/sitter/detail";
 
 export default function AppRoutes() {
-    const user = useRecoilValue(userInfoState);
-    return (
-        <Router>
-            <Routes>
-                {user.isLogin ? (
-                    <>
-                        <Route path="/*" element={<Home />} />
-                        <Route path="/mypage/*" element={<Mypage />} />
-                        <Route path="/sitter/list" element={<SitterList />} />
-                        <Route
-                            path="/sitter/detail/:sitterUserId"
-                            element={<SitterDetail />}
-                        />
-                    </>
-                ) : (
-                    <>
-                        <Route path="/" element={<Onboard />} />
-                        <Route path="/select" element={<OnboardSelect />} />
-                        <Route
-                            path="/parentCareType"
-                            element={<ParentCareType />}
-                        />
-                        <Route
-                            path="/parentChildrenBirth"
-                            element={<ParentChildrenBirth />}
-                        />
-                        <Route
-                            path="/parentwantedGu"
-                            element={<ParentwantedGu />}
-                        />
-                        <Route
-                            path="/parentIntroduction"
-                            element={<ParentIntroduction />}
-                        />
-                        <Route
-                            path="/parentMakeAccount"
-                            element={<ParentMakeAccount />}
-                        />
-                        <Route path="/senior/*" element={<OnboardSenior />} />
-                    </>
-                )}
-            </Routes>
-        </Router>
-    );
-
+  const user = useRecoilValue(userInfoState);
+  return (
+    <Router>
+      <Routes>
+        {user.isLogin ? (
+          <>
+            <Route path="/*" element={<Home />} />
+            <Route path="/mypage/*" element={<Mypage />} />
+            <Route path="/sitter/list" element={<SitterList />} />
+            <Route
+              path="/sitter/detail/:sitterUserId"
+              element={<SitterDetail />}
+            />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<Onboard />} />
+            <Route path="/select" element={<OnboardSelect />} />
+            <Route path="/parentCareType" element={<ParentCareType />} />
+            <Route
+              path="/parentChildrenBirth"
+              element={<ParentChildrenBirth />}
+            />
+            <Route path="/parentwantedGu" element={<ParentwantedGu />} />
+            <Route
+              path="/parentIntroduction"
+              element={<ParentIntroduction />}
+            />
+            <Route path="/parentMakeAccount" element={<ParentMakeAccount />} />
+            <Route path="/senior/*" element={<OnboardSenior />} />
+          </>
+        )}
+      </Routes>
+    </Router>
+  );
 }
