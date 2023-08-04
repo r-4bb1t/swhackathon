@@ -834,7 +834,7 @@ export default function SitterDetail() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col shrink pt-14">
+    <div className="w-full flex flex-col shrink pt-14">
       <Header></Header>
 
       <div className="w-full p-8 pt-4">
