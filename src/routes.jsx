@@ -22,8 +22,8 @@ export default function AppRoutes() {
             <Routes>
                 {user.isLogin ? (
                     <>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/mypage" element={<Mypage />} />
+                        <Route path="/*" element={<Home />} />
+                        <Route path="/mypage/*" element={<Mypage />} />
                         <Route path="/sitter/list" element={<SitterList />} />
                         <Route
                             path="/sitter/detail/:sitterUserId"
@@ -60,4 +60,5 @@ export default function AppRoutes() {
             </Routes>
         </Router>
     );
+
 }

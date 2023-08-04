@@ -3,6 +3,7 @@ import SeniorEducation from "./education";
 import SeniorJob from "./jobs";
 import ChildrenList from "./children/list";
 import ChildrenDetail from "./children/detail";
+import SeniorEducationList from "./education/list";
 
 export default function HomeSenior() {
   return (
@@ -11,7 +12,7 @@ export default function HomeSenior() {
         <Route
           path="/"
           element={
-            <div className="w-full h-full p-8 pt-12">
+            <div className="w-full h-full p-8 pt-12 flex flex-col gap-12">
               <SeniorJob />
               <SeniorEducation />
             </div>
@@ -19,6 +20,7 @@ export default function HomeSenior() {
         />
         <Route path="/children/list" element={<ChildrenList />} />
         <Route path="/children/detail/:id" element={<ChildrenDetail />} />
+        <Route path="/education" element={<SeniorEducationList />} />
       </Routes>
     </div>
   );
