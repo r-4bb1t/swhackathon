@@ -1,4 +1,5 @@
 import Icons from "@/components/Icons";
+import { getChildType } from "@/utils/getChildType";
 import { Link } from "react-router-dom";
 
 export default function Children({ items }) {
@@ -16,11 +17,15 @@ export default function Children({ items }) {
                 {item.parentsUserChildren[0].slice(2, 4)}년{" "}
                 {item.parentsUserChildren[0].slice(4, 6)}월생
               </div>
-              <div className="text-caption mb-3 text-black-800">신생아</div>
-              <div className="flex">
-                <div className="badge badge-accent font-medium">
-                  등하원 돌봄
-                </div>
+              <div className="text-caption mb-3 text-black-800">
+                {getChildType(item.parentsUserChildren[0])}
+              </div>
+              <div className="flex gap-2">
+                {item.parentsUserCareTypeNames.map((type_name, i) => (
+                  <div className="badge badge-accent font-medium" key={i}>
+                    {type_name}
+                  </div>
+                ))}
               </div>
             </div>
             <div className="flex items-center justify-center w-24 h-full">

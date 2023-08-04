@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 import { getChild } from "@/queries/children";
 import { CARE_TYPES } from "@/constants/child";
 import Icons from "@/components/Icons";
+import { getChildType } from "@/utils/getChildType";
 
 export default function ChildrenDetail() {
   const { id } = useParams();
@@ -57,7 +58,7 @@ export default function ChildrenDetail() {
             <div className="text-subtitle-bold mb-4">해당 돌봄 연령</div>
             <div className="flex w-full justify-center">
               <div className="border border-primary rounded flex items-center justify-center text-center w-full py-4 gap-2">
-                <div>신생아</div>
+                <div>{getChildType(data.parentsUserChildrenBirth)}</div>
               </div>
             </div>
 
