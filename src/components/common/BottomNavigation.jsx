@@ -1,11 +1,14 @@
 import Icons from "@/components/Icons";
+import { userInfoState } from "@/recoil/atoms/userState";
+import { useRecoilValue } from "recoil";
 
 function BottomNavigation() {
+  const user = useRecoilValue(userInfoState);
   const activeMenu = window.location.pathname.includes("mypage")
     ? "myPage"
     : "home";
 
-  return (
+  return user.isLogin ? (
     <div className="btm-nav bg-white">
       <a href={"/"} className={activeMenu === "home" ? "active" : ""}>
         <Icons.Home
@@ -42,7 +45,7 @@ function BottomNavigation() {
         </span>{" "}
       </a>
     </div>
-  );
+  ) : null;
 }
 
 export default BottomNavigation;
