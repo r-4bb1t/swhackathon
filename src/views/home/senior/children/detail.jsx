@@ -12,7 +12,7 @@ import { userInfoState } from "@/recoil/atoms/userState";
 import { useEffect, useState } from "react";
 import BottomDrawer from "@/components/common/BottomDrawer";
 import { format } from "date-fns";
-import SetTime from "@/components/mypage/senior/setTime";
+import SetTime from "@/components/mypage/senior/SetTime";
 import SetContact from "@/components/mypage/senior/SetContact";
 import { useAlert } from "@/contexts/useAlert";
 
