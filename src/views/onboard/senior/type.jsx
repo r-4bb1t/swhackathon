@@ -2,30 +2,8 @@ import Button from "@/components/common/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { userInfoState } from "../../../recoil/atoms/userState";
-
-const TYPES = [
-  {
-    title: "등하원 돌봄",
-    price: 10000,
-    description: "등하원지도, 식사 및 간식, 준비물 챙기기, 등교지도 등",
-  },
-  {
-    title: "아픈아이 돌봄",
-    price: 9000,
-    description: "일시적으로 아파 학교 가기 어려운 자녀 돌봄",
-  },
-  {
-    title: "1회성 돌봄",
-    price: 9000,
-    description: "일자녀병원동행, 부모의 긴급 외출, 휴식 등",
-  },
-  {
-    title: "모임활동 지원",
-    price: 12000,
-    description: "부모님들 모임, 행사 시 자녀돌봄, 1대 다 돌봄",
-  },
-];
+import { userInfoState } from "@/recoil/atoms/userState";
+import { CARE_TYPES } from "@/constants/child";
 
 const Item = ({
   title,
@@ -75,7 +53,7 @@ export default function Type() {
         </div>
 
         <div className="flex flex-col gap-6 mt-14">
-          {TYPES.map((type) => (
+          {CARE_TYPES.map((type) => (
             <Item
               title={type.title}
               price={type.price}

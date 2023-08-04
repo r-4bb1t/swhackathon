@@ -11,7 +11,7 @@ export default function HomeSenior() {
         <Route
           path="/"
           element={
-            <div className="w-full h-full p-8 pt-12">
+            <div className="w-full h-full p-8 pt-12 flex flex-col gap-12">
               <SeniorJob />
               <SeniorEducation />
             </div>
