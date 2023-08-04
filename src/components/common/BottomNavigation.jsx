@@ -2,7 +2,7 @@ import Icons from "@/components/Icons";
 
 function BottomNavigation() {
   const activeMenu = window.location.pathname.includes("mypage")
-    ? "mypage"
+    ? "myPage"
     : "home";
 
   return (

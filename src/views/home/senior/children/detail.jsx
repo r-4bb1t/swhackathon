@@ -1,17 +1,69 @@
 import { useParams } from "react-router";
 import FAQ from "@/components/FAQ";
 import Button from "@/components/common/Button";
-import { useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { getChild } from "@/queries/children";
 import { CARE_TYPES } from "@/constants/child";
 import Icons from "@/components/Icons";
 import { getChildType } from "@/utils/getChildType";
+import { postCare } from "@/queries/sitter";
+import { useRecoilValue } from "recoil";
+import { userInfoState } from "@/recoil/atoms/userState";
+import { useEffect, useState } from "react";
+import BottomDrawer from "@/components/common/BottomDrawer";
+import { format } from "date-fns";
+import SetTime from "@/components/mypage/senior/setTime";
+import SetContact from "@/components/mypage/senior/SetContact";
+import { useAlert } from "@/contexts/useAlert";
 
 export default function ChildrenDetail() {
   const { id } = useParams();
+  const user = useRecoilValue(userInfoState);
+  const [year, setYear] = useState("2023");
+  const [month, setMonth] = useState();
+  const [date, setDate] = useState();
+
+  const [startTime, setStartTime] = useState({ hour: null, minute: null });
+  const [endTime, setEndTime] = useState({ hour: null, minute: null });
+
+  const [isStartTimeAM, setIsStartTimeAM] = useState(true);
+  const [isEndTimeAM, setIsEndTimeAM] = useState(true);
+
+  const [contactPhoneNumber, setContactPhoneNumber] = useState(user.phoneNum);
+  const [isBottomDrawerOpened, setIsBottomDrawerOpened] = useState(false);
+
+  const [status, setStatus] = useState(0);
+  const { push } = useAlert();
+  const queryClient = useQueryClient();
+
   const { data } = useQuery({
     queryKey: ["childrenDetail"],
     queryFn: () => getChild(id),
+  });
+  const { mutate: applyCare } = useMutation({
+    mutationKey: ["post-care"],
+    mutationFn: () =>
+      postCare({
+        sitterUserId: user.id,
+        date: `${year}-${month.padStart(2, "0")}-${date.padStart(2, "0")}`,
+        startTime: `${(isStartTimeAM
+          ? startTime.hour
+          : `${parseInt(startTime.hour) + 12}`
+        ).padStart(2, "0")}:${startTime.minute.padStart(2, "0")}`,
+        endTime: `${(isEndTimeAM
+          ? endTime.hour
+          : `${parseInt(endTime.hour) + 12}`
+        ).padStart(2, "0")}:${endTime.minute.padStart(2, "0")}`,
+        contactPhoneNumber,
+        parentsUserId: id,
+      }),
+    onSuccess: () => {
+      push({
+        message: "신청이 완료되었습니다. 1시간안에 문자로 안내해드릴게요.",
+        onClose: () => setIsBottomDrawerOpened(false),
+      }),
+        queryClient.invalidateQueries(["childrenDetail"]);
+    },
   });
   return (
     <div className="w-full h-full flex flex-col shrink">
@@ -67,7 +119,9 @@ export default function ChildrenDetail() {
           <FAQ />
 
           <div className="p-8">
-            <Button>신청하기</Button>
+            <Button onClick={() => setIsBottomDrawerOpened(true)}>
+              신청하기
+            </Button>
           </div>
         </>
       ) : (
@@ -75,6 +129,37 @@ export default function ChildrenDetail() {
           <Icons.Spinner className="stroke-white w-4 h-4 animate-spin" />
         </div>
       )}
+      <BottomDrawer
+        isVisible={isBottomDrawerOpened}
+        onClose={() => setIsBottomDrawerOpened(false)}
+      >
+        {status == 0 && (
+          <SetTime
+            year={year}
+            setYear={setYear}
+            month={month}
+            setMonth={setMonth}
+            date={date}
+            setDate={setDate}
+            startTime={startTime}
+            setStartTime={setStartTime}
+            endTime={endTime}
+            setEndTime={setEndTime}
+            isStartTimeAM={isStartTimeAM}
+            isEndTimeAM={isEndTimeAM}
+            setIsStartTimeAM={setIsStartTimeAM}
+            setIsEndTimeAM={setIsEndTimeAM}
+            setStatus={setStatus}
+          />
+        )}
+        {status == 1 && (
+          <SetContact
+            contactPhoneNumber={contactPhoneNumber}
+            setContactPhoneNumber={setContactPhoneNumber}
+            handleApply={applyCare}
+          />
+        )}
+      </BottomDrawer>
     </div>
   );
 }
