@@ -1,11 +1,11 @@
 {
-  "name": "꺄르르 - 슬로건",
+  "name": "꺄르르 - 아이들의 행복한 웃음소리를 위한 시니어 시터 돌봄 서비스",
   "short_name": "꺄르르",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#D76E75",
-  "description": "슬로건",
+  "description": "아이들의 행복한 웃음소리를 위한 시니어 시터 돌봄 서비스",
   "icons": [
     {
       "src": "icons/favicon.ico",
