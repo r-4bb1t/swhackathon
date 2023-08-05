@@ -58,7 +58,10 @@ export default function Onboard() {
             src="/assets/familyPhoto.svg"
             className="w-full h-full object-contain"
           />
-          <Icons.Logo className="absolute w-1/3 h-auto bottom-12" />
+          <img
+            src="/assets/logo.png"
+            className="absolute w-1/3 h-auto bottom-12 object-contain"
+          />
         </div>
         <div className="w-full h-full flex flex-col justify-between">
           <div className="flex flex-col items-center p-8 gap-4">
