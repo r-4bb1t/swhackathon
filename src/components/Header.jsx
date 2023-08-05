@@ -9,7 +9,7 @@ export default function Header() {
       <div className="h-full flex items-center">
         {pathname === "/" ? (
           <div className="pl-2">
-            <Icons.Logo className="w-fit h-7" />
+            <img src="/assets/logo.png" className="w-fit h-5 object-contain" />
           </div>
         ) : (
           <button onClick={() => navigate(-1)}>
